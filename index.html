@@ -3,182 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Обслуживание 1С и касс для магазинов — Кемерово</title>
-<meta name="description" content="Настройка 1С, ремонт и обслуживание касс, ККТ, обучение продавцов. Кемерово, Зарубино и район. Решаю удалённо, выезжаю по договорённости.">
+<title>Обслуживание 1С и касс — Кемерово. Настрою, починю, научу</title>
+<meta name="description" content="Настройка и поддержка 1С (Розница, УТ, ТП 7 ЦОР Штрих-М, Кассир 5, Айлекс), кассовое оборудование, сервер 1С + SQL, локальная сеть, видеонаблюдение. Кемерово. Отвечаю сам, без колл-центра.">
 <style>
-  :root {
-    --accent: #0e6e5c;
-    --accent-dark: #0a4f42;
-    --bg: #f7f6f2;
-    --card: #ffffff;
-    --text: #1f2933;
-    --muted: #5b6670;
-  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
     line-height: 1.6;
+    color: #222;
+    background: #f7f7f9;
   }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-
-  /* Hero */
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
   header {
-    background: linear-gradient(160deg, var(--accent) 0%, var(--accent-dark) 100%);
+    background: #1a3a5c;
     color: #fff;
-    padding: 64px 0 56px;
+    padding: 48px 0 40px;
   }
-  header h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.25; font-weight: 800; }
-  header p.sub { margin-top: 14px; font-size: clamp(16px, 2.5vw, 19px); opacity: .92; max-width: 640px; }
-  .cta-row { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+  header h1 { font-size: 28px; line-height: 1.25; margin-bottom: 14px; }
+  header p { font-size: 17px; opacity: .92; }
+  .cta-row { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
   .btn {
-    display: inline-block; padding: 14px 26px; border-radius: 10px;
-    text-decoration: none; font-weight: 700; font-size: 16px;
-    transition: transform .15s ease, opacity .15s ease;
-  }
-  .btn:hover { transform: translateY(-2px); opacity: .95; }
-  .btn-white { background: #fff; color: var(--accent-dark); }
-  .btn-outline { border: 2px solid rgba(255,255,255,.7); color: #fff; }
-  .geo { margin-top: 22px; font-size: 15px; opacity: .85; }
-
-  /* Sections */
-  section { padding: 48px 0; }
-  section h2 { font-size: clamp(22px, 4vw, 28px); margin-bottom: 22px; color: var(--accent-dark); }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-  .card {
-    background: var(--card); border-radius: 12px; padding: 20px 22px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-  }
-  .card h3 { font-size: 17px; margin-bottom: 8px; }
-  .card p { color: var(--muted); font-size: 15px; }
-  ul.clean { list-style: none; }
-  ul.clean li { padding: 6px 0 6px 26px; position: relative; }
-  ul.clean li::before {
-    content: ""; position: absolute; left: 0; top: 14px;
-    width: 10px; height: 10px; border-radius: 3px; background: var(--accent);
-  }
-
-  /* Steps */
-  .steps { counter-reset: step; }
-  .steps li {
-    counter-increment: step; padding: 10px 0 10px 46px; position: relative;
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 8px;
     font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
   }
+  .btn-call { background: #fff; color: #1a3a5c; }
+  .btn-msg  { background: #ffb400; color: #1a1a1a; }
+  section { padding: 36px 0; }
+  section.alt { background: #fff; }
+  h2 { font-size: 22px; margin-bottom: 18px; color: #1a3a5c; }
+  h3 { font-size: 18px; margin: 24px 0 10px; color: #1a3a5c; }
+  ul { list-style: none; }
+  ul li { padding: 5px 0 5px 26px; position: relative; }
+  ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #ffb400;
+    font-weight: 700;
+  }
+  .steps { counter-reset: step; }
+  .steps li { padding-left: 40px; counter-increment: step; }
   .steps li::before {
-    content: counter(step);
-    position: absolute; left: 0; top: 8px;
-    width: 30px; height: 30px; border-radius: 50%;
-    background: var(--accent); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 15px;
+    content: counter(step) ".";
+    position: absolute;
+    left: 0;
+    color: #1a3a5c;
+    font-weight: 700;
+    font-size: 18px;
   }
-
-  /* Prices */
-  table.prices { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
-  table.prices td { padding: 14px 18px; border-bottom: 1px solid #eee; font-size: 15px; }
-  table.prices tr:last-child td { border-bottom: none; }
-  table.prices td:last-child { text-align: right; font-weight: 700; white-space: nowrap; color: var(--accent-dark); }
-  .note { margin-top: 12px; font-size: 14px; color: var(--muted); }
-
-  /* About */
-  .about { background: var(--card); border-radius: 12px; padding: 24px 26px; box-shadow: 0 1px 4px rgba(0,0,0,.06); font-size: 16px; }
-
-  /* Contact */
-  .contact-box {
-    background: linear-gradient(160deg, var(--accent) 0%, var(--accent-dark) 100%);
-    color: #fff; border-radius: 14px; padding: 36px 30px; text-align: center;
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; background: #fff; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 15px; }
+  th { background: #eef2f7; color: #1a3a5c; font-weight: 600; }
+  td:last-child { white-space: nowrap; font-weight: 600; }
+  .note { font-size: 14px; color: #666; margin-top: 14px; }
+  .persona {
+    background: #fff;
+    border-left: 4px solid #ffb400;
+    padding: 18px 20px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #444;
   }
-  .contact-box h2 { color: #fff; }
-  .contact-box p { opacity: .9; margin-bottom: 22px; }
-  .contact-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-  footer { text-align: center; padding: 30px 0; color: var(--muted); font-size: 14px; }
+  footer {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 36px 0;
+    text-align: center;
+  }
+  footer .cta-row { justify-content: center; }
+  footer p { margin-top: 20px; font-size: 14px; opacity: .85; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <h1>Обслуживание 1С и касс для магазинов</h1>
-    <p class="sub">Настрою, починю, научу. Работаю с магазинами, пекарнями и точками на рынке. Большинство вопросов решаю удалённо — без ожидания выезда.</p>
+    <h1>Обслуживание 1С и касс для магазинов.<br>Настрою, починю, научу.</h1>
+    <p>Работаю с магазинами, пекарнями и точками на рынке. Решаю вопросы удалённо и с выездом. Без колл-центра — пишете мне, отвечаю мне.</p>
     <div class="cta-row">
-      <!-- ЗАМЕНИТЕ телефон в href и в тексте кнопки -->
-      <a class="btn btn-white" href="tel:+7XXXXXXXXXX">Позвонить</a>
-      <!-- ЗАМЕНИТЕ ссылку на MAX -->
-      <a class="btn btn-outline" href="#" target="_blank" rel="noopener">Написать в MAX</a>
+      <!-- ЗАМЕНИТЕ: телефон -->
+      <a class="btn btn-call" href="tel:+7XXXXXXXXXX">Позвонить</a>
+      <!-- ЗАМЕНИТЕ: ссылка на MAX -->
+      <a class="btn btn-msg" href="#">Написать в MAX</a>
     </div>
-    <p class="geo">Зарубино, Кемерово и район</p>
   </div>
 </header>
 
-<section>
+<section class="alt">
   <div class="wrap">
     <h2>Что я делаю</h2>
-    <ul class="clean">
-      <li>Настройка 1С: Розница, УТ, ТП 7 ЦОР Штрих-М, Кассир 5, Айлекс</li>
-      <li>Ошибки обмена и сбои в работе 1С — исправляю. По обновлениям помогу разобраться с ИТС, чтобы всё было легально</li>
-      <li>Регистрация и перерегистрация ККТ. Замена фискального накопителя — через партнёра, заявку веду сам</li>
+
+    <h3>Касса и 1С</h3>
+    <ul>
+      <li>Установка и настройка 1С: Розница, УТ, ТП 7 ЦОР Штрих-М, Кассир 5, Айлекс</li>
+      <li>Ошибки обмена и сбои в работе 1С — исправляю; по обновлениям помогаю с ИТС</li>
+      <li>Диагностика кассы и периферии; подключаю проверенных мастеров по ремонту</li>
+      <li>Регистрация и перерегистрация ККТ; замена ФН — через партнёра, заявку веду сам</li>
+      <li>Обучение продавца работе с кассой — удалённо, за час</li>
+    </ul>
+
+    <h3>Магазин под ключ</h3>
+    <ul>
+      <li>Подбор и подключение оборудования: касса, фискальный регистратор, сканер ШК, эквайринг</li>
+      <li>Настройка ТСД, инвентаризация через терминал сбора данных</li>
+      <li>Весы с печатью этикеток: подключение к 1С, загрузка товаров</li>
+      <li>Макеты ценников и этикеток, печать из 1С — чтобы цена на ценнике совпадала с базой</li>
       <li>Маркировка и прослеживаемость (ПИОТ): подключение, настройка кассы, обучение</li>
-      <li>Обучение продавца работе с кассой — удалённо, 30–60 минут</li>
-      <li>Касса сломалась? Диагностирую и подключаю проверенного мастера по ремонту — контролирую до результата. Вам достаточно одного звонка мне</li>
+      <li>Меркурий и ЕГАИС — подключение и настройка</li>
+      <li>ЭЦП и электронный документооборот: получение подписи, приёмка товара по ЭДО</li>
+    </ul>
+
+    <h3>Сервер и сеть</h3>
+    <ul>
+      <li>Сервер под 1С + SQL (MS SQL или PostgreSQL): установка, перенос базы с рабочего ПК</li>
+      <li>Резервное копирование баз 1С — с проверкой, что восстановление реально работает</li>
+      <li>Перенос 1С на новый компьютер или сервер</li>
+      <li>Локальная сеть: роутер, свитч, Wi-Fi в торговом зале</li>
+      <li>VPN для удалённого доступа — свой сервер, без сторонних сервисов</li>
+      <li>Видеонаблюдение: подбор камер и регистратора, просмотр с телефона</li>
+      <li>Апгрейд ПК, установка Windows и ПО, настройка рабочей машины под 1С</li>
     </ul>
   </div>
 </section>
 
-<section style="padding-top: 0;">
+<section>
   <div class="wrap">
     <h2>Как проходит работа</h2>
-    <ol class="steps">
+    <ul class="steps">
       <li>Пишете мне в MAX или звоните.</li>
       <li>За 5 минут разбираемся, что случилось.</li>
       <li>Большинство вопросов решаю удалённо — без выезда и ожидания.</li>
       <li>Если нужен выезд — согласуем время: обычно это тот же или следующий день.</li>
-    </ol>
+    </ul>
   </div>
 </section>
 
-<section style="padding-top: 0;">
+<section class="alt">
   <div class="wrap">
     <h2>Цены</h2>
-    <table class="prices">
-      <tr><td>Удалённое устранение ошибки</td><td>от 1 000 ₽</td></tr>
-      <tr><td>Выезд и решение на месте</td><td>от 1 500 ₽</td></tr>
-      <tr><td>Настройка 1С «под ключ»</td><td>от 5 000 ₽</td></tr>
-      <tr><td>Обучение продавца (удалённо, 30–60 мин)</td><td>1 000 ₽</td></tr>
-      <tr><td>Регистрация / перерегистрация ККТ</td><td>от 1 500 ₽</td></tr>
-      <tr><td>Замена фискального накопителя</td><td>по договорённости</td></tr>
-      <tr><td>Час доработок в 1С</td><td>1 500 ₽</td></tr>
+    <table>
+      <tr><th>Услуга</th><th>Цена</th></tr>
+      <!-- ЗАМЕНИТЕ: цифры можно править под себя -->
+      <tr><td>Удалённое устранение ошибки</td><td>от 1000 ₽</td></tr>
+      <tr><td>Выезд и решение на месте</td><td>от 1500 ₽</td></tr>
+      <tr><td>Настройка 1С под ключ</td><td>от 5000 ₽</td></tr>
+      <tr><td>Регистрация ККТ</td><td>от 1500 ₽</td></tr>
+      <tr><td>Обучение продавца удалённо</td><td>1000 ₽</td></tr>
+      <tr><td>Подключение и настройка оборудования (ТСД, весы, сканер)</td><td>от 2000 ₽</td></tr>
+      <tr><td>Маркировка, Меркурий, ЕГАИС — подключение</td><td>от 3000 ₽</td></tr>
+      <tr><td>Сервер 1С + SQL, перенос базы</td><td>от 10 000 ₽</td></tr>
+      <tr><td>Резервное копирование баз</td><td>от 3000 ₽</td></tr>
+      <tr><td>Локальная сеть, Wi-Fi</td><td>от 2000 ₽</td></tr>
+      <tr><td>VPN удалённого доступа</td><td>от 5000 ₽</td></tr>
+      <tr><td>Видеонаблюдение (настройка, без оборудования)</td><td>от 5000 ₽</td></tr>
+      <tr><td>Апгрейд ПК, установка Windows и ПО</td><td>от 1500 ₽</td></tr>
     </table>
-    <p class="note">Выезд в Зарубино и близкие районы — без доплаты за дорогу. Абонентское обслуживание — по договорённости после первой совместной работы.</p>
+    <p class="note">Точная цена зависит от задачи — назову сразу после короткого разговора, до начала работы.</p>
   </div>
 </section>
 
-<section style="padding-top: 0;">
+<section>
   <div class="wrap">
     <h2>Кому подходит</h2>
-    <div class="about">
-      Если у вас маленький магазин и вы не хотите платить франчайзи за «выезд инженера» каждые две недели — пишите напрямую. Отвечаю сам, без колл-центра и менеджеров. Платите за сделанную работу — навязывать договоры и абонентку не буду.
-    </div>
-  </div>
-</section>
-
-<section style="padding-top: 0;">
-  <div class="wrap">
-    <div class="contact-box">
-      <h2>Осталась проблема с кассой или 1С?</h2>
-      <p>Опишите ситуацию — назову решение и цену за пару минут.</p>
-      <div class="contact-cta">
-        <a class="btn btn-white" href="tel:+7XXXXXXXXXX">Позвонить</a>
-        <a class="btn btn-outline" href="#" target="_blank" rel="noopener">Написать в MAX</a>
-      </div>
+    <div class="persona">
+      Если у вас маленький магазин и вы не хотите платить франчайзи за «выезд инженера» каждые две недели — вы по адресу. Работаю напрямую: отвечаю сам, приезжаю сам. Не навязываю договоры и абонентку — платите за сделанную работу.
     </div>
   </div>
 </section>
 
 <footer>
-  <!-- ЗАМЕНИТЕ имя -->
-  <p>Имя Фамилия · Кемерово, Зарубино и район · evgaaze.ru</p>
+  <div class="wrap">
+    <h2 style="color:#fff;">Связаться</h2>
+    <div class="cta-row">
+      <!-- ЗАМЕНИТЕ: телефон -->
+      <a class="btn btn-call" href="tel:+7XXXXXXXXXX">Позвонить</a>
+      <!-- ЗАМЕНИТЕ: ссылка на MAX -->
+      <a class="btn btn-msg" href="#">Написать в MAX</a>
+    </div>
+    <!-- ЗАМЕНИТЕ: имя -->
+    <p>Имя Фамилия — обслуживание 1С и касс. Кемерово.</p>
+  </div>
 </footer>
 
 </body>
