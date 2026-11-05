@@ -1,193 +1,194 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Обслуживание 1С и касс — Кемерово. Настрою, починю, научу</title>
-<meta name="description" content="Настройка и поддержка 1С (Розница, УТ, ТП 7 ЦОР Штрих-М, Кассир 5, Айлекс), кассовое оборудование, сервер 1С + SQL, локальная сеть, видеонаблюдение. Кемерово. Отвечаю сам, без колл-центра.">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    line-height: 1.6;
-    color: #222;
-    background: #f7f7f9;
-  }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
-  header {
-    background: #1a3a5c;
-    color: #fff;
-    padding: 48px 0 40px;
-  }
-  header h1 { font-size: 28px; line-height: 1.25; margin-bottom: 14px; }
-  header p { font-size: 17px; opacity: .92; }
-  .cta-row { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn {
-    display: inline-block;
-    padding: 13px 26px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    text-align: center;
-  }
-  .btn-call { background: #fff; color: #1a3a5c; }
-  .btn-msg  { background: #ffb400; color: #1a1a1a; }
-  section { padding: 36px 0; }
-  section.alt { background: #fff; }
-  h2 { font-size: 22px; margin-bottom: 18px; color: #1a3a5c; }
-  h3 { font-size: 18px; margin: 24px 0 10px; color: #1a3a5c; }
-  ul { list-style: none; }
-  ul li { padding: 5px 0 5px 26px; position: relative; }
-  ul li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: #ffb400;
-    font-weight: 700;
-  }
-  .steps { counter-reset: step; }
-  .steps li { padding-left: 40px; counter-increment: step; }
-  .steps li::before {
-    content: counter(step) ".";
-    position: absolute;
-    left: 0;
-    color: #1a3a5c;
-    font-weight: 700;
-    font-size: 18px;
-  }
-  table { width: 100%; border-collapse: collapse; margin-top: 8px; background: #fff; }
-  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 15px; }
-  th { background: #eef2f7; color: #1a3a5c; font-weight: 600; }
-  td:last-child { white-space: nowrap; font-weight: 600; }
-  .note { font-size: 14px; color: #666; margin-top: 14px; }
-  .persona {
-    background: #fff;
-    border-left: 4px solid #ffb400;
-    padding: 18px 20px;
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: #444;
-  }
-  footer {
-    background: #1a3a5c;
-    color: #fff;
-    padding: 36px 0;
-    text-align: center;
-  }
-  footer .cta-row { justify-content: center; }
-  footer p { margin-top: 20px; font-size: 14px; opacity: .85; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обслуживание 1С и касс для магазинов — Кемерово</title>
+  <meta name="description" content="Настройка 1С, ремонт и обслуживание касс и ККТ, обучение персонала. Кемерово. Решаю удалённо, выезд — по договорённости.">
+  <style>
+    :root {
+      --accent: #0e6e5c;
+      --accent-dark: #0a4f42;
+      --bg: #f7f6f2;
+      --text: #23272a;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --line: #e5e2da;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--accent-dark);
+      color: #fff;
+      padding: 48px 16px 40px;
+      text-align: center;
+    }
+    header h1 { font-size: clamp(24px, 4.5vw, 40px); line-height: 1.2; max-width: 800px; margin: 0 auto 12px; }
+    header p { color: #cfe3dd; max-width: 640px; margin: 0 auto; font-size: 17px; }
+    main { max-width: 860px; margin: 0 auto; padding: 40px 16px 64px; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 24px; margin-bottom: 16px; color: var(--accent-dark); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card h3 { font-size: 19px; margin-bottom: 10px; color: var(--accent-dark); }
+    .card ul { list-style: none; }
+    .card li { padding: 4px 0 4px 22px; position: relative; }
+    .card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+    .steps { list-style: none; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 20px 16px 56px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute; left: 16px; top: 16px;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px;
+    }
+    .steps b { display: block; margin-bottom: 2px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .price-row {
+      display: flex; justify-content: space-between; gap: 16px;
+      border-bottom: 1px dashed var(--line);
+      padding: 10px 0; flex-wrap: wrap;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price { font-weight: 700; color: var(--accent-dark); white-space: nowrap; }
+    .note {
+      background: #fdf6e8;
+      border: 1px solid #f0e2c4;
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 15px;
+    }
+    .catchall {
+      background: var(--accent-dark); color: #fff;
+      border-radius: 12px; padding: 24px; text-align: center;
+    }
+    .catchall strong { font-size: 19px; }
+    .cta {
+      display: inline-block;
+      background: var(--accent); color: #fff; text-decoration: none;
+      padding: 14px 28px; border-radius: 10px; font-weight: 600;
+      margin-top: 8px;
+    }
+    .cta:hover { background: var(--accent-dark); }
+    footer { text-align: center; color: var(--muted); font-size: 14px; padding: 24px 16px; }
+    @media (max-width: 600px) { header { padding: 36px 16px 28px; } }
+  </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <h1>Обслуживание 1С и касс для магазинов.<br>Настрою, починю, научу.</h1>
-    <p>Работаю с магазинами, пекарнями и точками на рынке. Решаю вопросы удалённо и с выездом. Без колл-центра — пишете мне, отвечаю мне.</p>
-    <div class="cta-row">
-      <!-- ЗАМЕНИТЕ: телефон -->
-      <a class="btn btn-call" href="tel:+7XXXXXXXXXX">Позвонить</a>
-      <!-- ЗАМЕНИТЕ: ссылка на MAX -->
-      <a class="btn btn-msg" href="#">Написать в MAX</a>
-    </div>
-  </div>
+  <h1>Обслуживание 1С и касс для магазинов</h1>
+  <p>Кемерово. Настройка и сопровождение, ремонт касс, обучение персонала. Чаще решаю удалённо, при необходимости выезжаю.</p>
 </header>
 
-<section class="alt">
-  <div class="wrap">
-    <h2>Что я делаю</h2>
+<main>
 
-    <h3>Касса и 1С</h3>
-    <ul>
-      <li>Установка и настройка 1С: Розница, УТ, ТП 7 ЦОР Штрих-М, Кассир 5, Айлекс</li>
-      <li>Ошибки обмена и сбои в работе 1С — исправляю; по обновлениям помогаю с ИТС</li>
-      <li>Диагностика кассы и периферии; подключаю проверенных мастеров по ремонту</li>
-      <li>Регистрация и перерегистрация ККТ; замена ФН — через партнёра, заявку веду сам</li>
-      <li>Обучение продавца работе с кассой — удалённо, за час</li>
-    </ul>
-
-    <h3>Магазин под ключ</h3>
-    <ul>
-      <li>Подбор и подключение оборудования: касса, фискальный регистратор, сканер ШК, эквайринг</li>
-      <li>Настройка ТСД, инвентаризация через терминал сбора данных</li>
-      <li>Весы с печатью этикеток: подключение к 1С, загрузка товаров</li>
-      <li>Макеты ценников и этикеток, печать из 1С — чтобы цена на ценнике совпадала с базой</li>
-      <li>Маркировка и прослеживаемость (ПИОТ): подключение, настройка кассы, обучение</li>
-      <li>Меркурий и ЕГАИС — подключение и настройка</li>
-      <li>ЭЦП и электронный документооборот: получение подписи, приёмка товара по ЭДО</li>
-    </ul>
-
-    <h3>Сервер и сеть</h3>
-    <ul>
-      <li>Сервер под 1С + SQL (MS SQL или PostgreSQL): установка, перенос базы с рабочего ПК</li>
-      <li>Резервное копирование баз 1С — с проверкой, что восстановление реально работает</li>
-      <li>Перенос 1С на новый компьютер или сервер</li>
-      <li>Локальная сеть: роутер, свитч, Wi-Fi в торговом зале</li>
-      <li>VPN для удалённого доступа — свой сервер, без сторонних сервисов</li>
-      <li>Видеонаблюдение: подбор камер и регистратора, просмотр с телефона</li>
-      <li>Апгрейд ПК, установка Windows и ПО, настройка рабочей машины под 1С</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
+  <section>
     <h2>Как проходит работа</h2>
-    <ul class="steps">
-      <li>Пишете мне в MAX или звоните.</li>
-      <li>За 5 минут разбираемся, что случилось.</li>
-      <li>Большинство вопросов решаю удалённо — без выезда и ожидания.</li>
-      <li>Если нужен выезд — согласуем время: обычно это тот же или следующий день.</li>
-    </ul>
-  </div>
-</section>
+    <ol class="steps">
+      <li><b>Вы описываете проблему</b> — пишете в мессенджер или звоните, я отвечаю и говорю, что можно сделать.</li>
+      <li><b>Договариваемся о цене и сроках</b> — до начала работ, без «посмотрим по факту».</li>
+      <li><b>Решаю задачу</b> — удалённо или выездом, как удобнее.</li>
+      <li><b>Показываю результат</b> — и остаюсь на связи, если что-то пойдёт не так.</li>
+    </ol>
+  </section>
 
-<section class="alt">
-  <div class="wrap">
-    <h2>Цены</h2>
-    <table>
-      <tr><th>Услуга</th><th>Цена</th></tr>
-      <!-- ЗАМЕНИТЕ: цифры можно править под себя -->
-      <tr><td>Удалённое устранение ошибки</td><td>от 1000 ₽</td></tr>
-      <tr><td>Выезд и решение на месте</td><td>от 1500 ₽</td></tr>
-      <tr><td>Настройка 1С под ключ</td><td>от 5000 ₽</td></tr>
-      <tr><td>Регистрация ККТ</td><td>от 1500 ₽</td></tr>
-      <tr><td>Обучение продавца удалённо</td><td>1000 ₽</td></tr>
-      <tr><td>Подключение и настройка оборудования (ТСД, весы, сканер)</td><td>от 2000 ₽</td></tr>
-      <tr><td>Маркировка, Меркурий, ЕГАИС — подключение</td><td>от 3000 ₽</td></tr>
-      <tr><td>Сервер 1С + SQL, перенос базы</td><td>от 10 000 ₽</td></tr>
-      <tr><td>Резервное копирование баз</td><td>от 3000 ₽</td></tr>
-      <tr><td>Локальная сеть, Wi-Fi</td><td>от 2000 ₽</td></tr>
-      <tr><td>VPN удалённого доступа</td><td>от 5000 ₽</td></tr>
-      <tr><td>Видеонаблюдение (настройка, без оборудования)</td><td>от 5000 ₽</td></tr>
-      <tr><td>Апгрейд ПК, установка Windows и ПО</td><td>от 1500 ₽</td></tr>
-    </table>
-    <p class="note">Точная цена зависит от задачи — назову сразу после короткого разговора, до начала работы.</p>
-  </div>
-</section>
+  <section>
+    <h2>Чем помогу</h2>
 
-<section>
-  <div class="wrap">
-    <h2>Кому подходит</h2>
-    <div class="persona">
-      Если у вас маленький магазин и вы не хотите платить франчайзи за «выезд инженера» каждые две недели — вы по адресу. Работаю напрямую: отвечаю сам, приезжаю сам. Не навязываю договоры и абонентку — платите за сделанную работу.
+    <div class="card">
+      <h3>Кассы и торговое оборудование</h3>
+      <ul>
+        <li>Подключение и настройка касс, фискальных регистраторов, сканеров, весов</li>
+        <li>Обновления ККТ и работа по ФФД, разбор ошибок кассы</li>
+        <li>Настройка ТСД: инвентаризация, приход, списание, переоценка</li>
+        <li>Эквайринг и банковские терминалы — подключение и настройка</li>
+      </ul>
     </div>
-  </div>
-</section>
+
+    <div class="card">
+      <h3>1С и товароучёт</h3>
+      <ul>
+        <li>Настройка и сопровождение 1С:Розница и УНФ</li>
+        <li>Обновления, пользователи и права доступа, обмен между базами</li>
+        <li>Товарные остатки, приход и расход, отчёты</li>
+        <li>Макеты ценников и этикеток, печать из 1С</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Обучение персонала и ЭДО</h3>
+      <ul>
+        <li>Обучение продавцов работе с кассой</li>
+        <li>Обучение операторов и товароведов работе в товароучётной программе</li>
+        <li>Настройка ЭЦП и электронного документооборота: установка Рутокена и КриптоПро, установка сертификатов и прописка в базе, настройка ЭДО. Сертификат ЭЦП я не выпускаю — помогу получить и подготовлю всё для работы с ним</li>
+      </ul>
+    </div>
+
+    <div class="catchall">
+      <strong>Не нашли свою задачу в списке?</strong>
+      <p style="margin: 8px 0 4px;">Напишите — разберёмся. Если задача не моя, честно скажу и по возможности подскажу, к кому обратиться.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Стоимость</h2>
+    <div class="card">
+      <div class="price-row"><span>Консультация по телефону или в мессенджере</span><span class="price">бесплатно</span></div>
+      <div class="price-row"><span>Разовая задача — настройка, ремонт, обновление</span><span class="price">от 1 500 ₽</span></div>
+      <div class="price-row"><span>Абонентское сопровождение магазина</span><span class="price">от 3 000 ₽/мес</span></div>
+    </div>
+    <div class="note">
+      <b>Выезды.</b> По Кемерову выезд уже включён в стоимость работы. Пригород и другие города — обсуждаются отдельно: это время в дороге, бензин, а при дальних выездах иногда и ночлег. Всё оговариваем заранее, сюрпризов в счёте не будет.
+    </div>
+    <!-- ЗАМЕНИТЕ: при желании подставьте свои цифры выше -->
+  </section>
+
+  <section>
+    <h2>Кому подходит</h2>
+    <div class="card">
+      <p>Розничным магазинам и торговым точкам Кемерова: продуктовым, промтоварным, аптекам и небольшим сетям. Если у вас пекарня с собственным производством — это отдельная история с калькуляцией и рецептурами, напишите, обсудим, смогу ли помочь.</p>
+      <!-- ЗАМЕНИТЕ: при желании можно добавить строку про Эвотор/облачные кассы, например:
+      "Если у вас касса на Эвоторе или другом облачном сервисе — напишите, скажу честно, чем могу быть полезен." -->
+    </div>
+  </section>
+
+  <section>
+    <h2>Связаться</h2>
+    <div class="card" style="text-align:center;">
+      <p style="margin-bottom: 12px;">Напишите или позвоните — отвечаю сам, без колл-центра и менеджеров.</p>
+      <!-- ЗАМЕНИТЕ: телефон -->
+      <p style="font-size: 22px; font-weight: 700; margin-bottom: 8px;"><a href="tel:+7XXXXXXXXXX" style="color: var(--accent-dark); text-decoration: none;">+7 (XXX) XXX-XX-XX</a></p>
+      <!-- ЗАМЕНИТЕ: ссылка на MAX или другой мессенджер -->
+      <a class="cta" href="https://max.ru/ВАШ_ПРОФИЛЬ">Написать в MAX</a>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  <div class="wrap">
-    <h2 style="color:#fff;">Связаться</h2>
-    <div class="cta-row">
-      <!-- ЗАМЕНИТЕ: телефон -->
-      <a class="btn btn-call" href="tel:+7XXXXXXXXXX">Позвонить</a>
-      <!-- ЗАМЕНИТЕ: ссылка на MAX -->
-      <a class="btn btn-msg" href="#">Написать в MAX</a>
-    </div>
-    <!-- ЗАМЕНИТЕ: имя -->
-    <p>Имя Фамилия — обслуживание 1С и касс. Кемерово.</p>
-  </div>
+  <!-- ЗАМЕНИТЕ: имя и год -->
+  Евгений Гаазе · Кемерово · 2026
 </footer>
 
 </body>
