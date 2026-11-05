@@ -3,82 +3,209 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ИТ-специалист для розницы — 1С, кассы, маркировка | Кемерово</title>
+<title>ИТ-специалист для розницы — 1С, кассы, маркировка · Кемерово</title>
 <style>
-  :root{
-    --bg:#12141a; --bg2:#1a1e28; --card:#20242f; --line:#2e3442;
-    --text:#e8eaf0; --muted:#9aa3b2; --accent:#4f8cff; --accent2:#7ab0ff; --warn:#e6b93f;
+  :root {
+    --bg: #0f1520;
+    --bg-card: #171f2e;
+    --bg-card-2: #1c2740;
+    --text: #e8edf5;
+    --muted: #9aa7bd;
+    --accent: #4f8ef7;
+    --accent-soft: #6ba3ff;
+    --border: #2a3550;
+    --warn-border: #d9a441;
+    --warn-bg: #2a2313;
+    --warn-text: #f0d9a8;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-  a{color:var(--accent2)}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
 
-  header{padding:56px 0 40px;border-bottom:1px solid var(--line);
-    background:linear-gradient(160deg,#161a24 0%,#12141a 100%)}
-  .eyebrow{color:var(--accent2);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
-  h1{font-size:clamp(26px,4vw,40px);line-height:1.25;margin-bottom:16px}
-  h1 em{font-style:normal;color:var(--accent2)}
-  .lead{color:var(--muted);font-size:17px;max-width:640px;margin-bottom:8px}
-  .hello{font-size:17px;margin-bottom:14px}
-  .btns{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-size:16px;text-decoration:none;font-weight:600;transition:.15s}
-  .btn-a{background:var(--accent);color:#fff}
-  .btn-a:hover{background:var(--accent2)}
-  .btn-b{border:1px solid var(--line);color:var(--text)}
-  .btn-b:hover{border-color:var(--accent)}
+  /* HEADER */
+  header { padding: 72px 0 48px; }
+  .kicker {
+    color: var(--accent);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.6vw, 46px);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 24px;
+  }
+  h1 .accent { color: var(--accent-soft); display: block; }
+  .intro { font-size: 19px; margin-bottom: 14px; }
+  .intro .name { font-weight: 700; }
+  .intro-sub { color: var(--muted); max-width: 760px; }
+  .cta-row { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform .12s ease, opacity .12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); background: transparent; }
 
-  section{padding:44px 0}
-  h2{font-size:clamp(22px,3vw,30px);margin-bottom:22px}
+  /* SECTIONS */
+  section { padding: 56px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: clamp(24px, 3vw, 32px); margin-bottom: 10px; }
+  .section-sub { color: var(--muted); margin-bottom: 36px; max-width: 760px; }
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 24px}
-  .card h3{font-size:19px;margin-bottom:12px;color:#fff}
-  .card ul{list-style:none}
-  .card li{padding-left:18px;position:relative;color:var(--muted);margin-bottom:8px;font-size:15px}
-  .card li::before{content:"—";position:absolute;left:0;color:var(--accent)}
-  .card.note{border-color:var(--warn)}
-  .badge{display:inline-block;background:rgba(230,185,63,.15);color:var(--warn);
-    font-size:13px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:.03em}
-  .card p{color:var(--muted);font-size:15px;margin-top:14px}
-  .card p strong{color:var(--text)}
-  .card p.accent-warn{color:var(--warn)}
-  .disclaimer{font-size:14px;color:var(--muted);font-style:italic;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+  /* CARDS */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 28px;
+  }
+  .card h3 { font-size: 20px; margin-bottom: 14px; }
+  .card ul { list-style: none; }
+  .card li { padding-left: 20px; position: relative; margin-bottom: 9px; color: #cdd6e4; }
+  .card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+  .card .note {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 15px;
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+  }
+  .card-wide { grid-column: 1 / -1; }
 
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-  .step b{color:var(--accent2);font-size:14px;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:8px}
-  .step p{color:var(--muted);font-size:15px}
-  .step p strong{color:var(--text)}
+  /* MARKIROVKA — warning card */
+  .card-warn {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+  }
+  .badge-warn {
+    display: inline-block;
+    background: var(--warn-border);
+    color: #241c07;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+  }
+  .card-warn h3 { color: var(--warn-text); }
+  .card-warn li { color: #e2d3b0; }
+  .card-warn li::before { color: var(--warn-border); }
+  .warn-text {
+    margin-top: 16px;
+    color: var(--warn-text);
+    background: rgba(217, 164, 65, 0.08);
+    border-left: 3px solid var(--warn-border);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+  }
+  .warn-text strong { color: #fff; }
 
-  .price-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
-  .price-box p{color:var(--muted);margin-bottom:14px}
-  .price-box p strong{color:var(--text)}
+  /* STEPS */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .step .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .step h3 { font-size: 17px; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: 15px; }
 
-  .fit{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-  .fit .card p{margin-top:6px}
+  /* PRICE */
+  .price-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+  }
+  .price-box p { color: #cdd6e4; margin-bottom: 14px; }
+  .price-box .note { color: var(--muted); font-size: 15px; border-top: 1px dashed var(--border); padding-top: 14px; margin-top: 18px; }
 
-  .contacts{background:linear-gradient(160deg,#1a2030,#141821);border:1px solid var(--line);border-radius:16px;padding:30px}
-  .contacts h3{font-size:16px;color:var(--accent2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
-  .contact-list{list-style:none;margin:14px 0 18px}
-  .contact-list li{margin-bottom:10px;font-size:17px}
-  .contact-list .who{color:var(--muted);font-size:14px}
-  .hint{color:var(--muted);font-size:15px}
+  /* AUDIENCE */
+  .aud { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .aud .card p { color: var(--muted); }
 
-  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
+  /* CONTACTS */
+  .contact-lead { font-size: 19px; margin-bottom: 26px; }
+  .contact-list { list-style: none; }
+  .contact-list li {
+    margin-bottom: 14px;
+    font-size: 18px;
+  }
+  .contact-list a { color: var(--accent-soft); text-decoration: none; font-weight: 600; }
+  .contact-list a:hover { text-decoration: underline; }
+  .contact-tag {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .contact-hint { color: var(--muted); font-size: 15px; margin-top: 22px; max-width: 720px; }
+  .contact-name { color: var(--muted); font-size: 15px; margin-bottom: 6px; }
+  .contact-name strong { color: var(--text); font-size: 18px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 40px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  @media (max-width: 860px) {
+    .grid, .steps, .aud { grid-template-columns: 1fr; }
+    header { padding: 48px 0 36px; }
+    section { padding: 40px 0; }
+  }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <div class="eyebrow">Кемерово · выезд и удалённая поддержка</div>
-    <h1>ИТ-поддержка для розницы.<br>Кассы, 1С, маркировка — <em>без паники и по-человечески</em></h1>
-    <p class="hello">Здравствуйте, я Евгений — ит-специалист по рознице. Настраиваю кассы и 1С для магазинов Кемерова: торгуйте, а не боритесь с техникой.</p>
-    <p class="lead">Магазины, точки на рынке, пекарни. Настройка и ремонт — в точке или удалённо. Вы описываете проблему — пишете в мессенджер или звоните, я отвечаю и говорю, что можно сделать.</p>
-    <div class="btns">
-      <a class="btn btn-a" href="contacts">Написать или позвонить</a>
-      <a class="btn btn-b" href="#services">Что я делаю</a>
+    <div class="kicker">Кемерово · выезд и удалённая поддержка</div>
+    <h1>ИТ&#8209;поддержка для розницы. Кассы, 1С, маркировка
+      <span class="accent">— без паники и по&#8209;человечески</span>
+    </h1>
+    <p class="intro"><span class="name">Здравствуйте, я Евгений</span> — ИТ-специалист по рознице. Настраиваю кассы и 1С для магазинов Кемерова: торгуйте, а не боритесь с техникой.</p>
+    <p class="intro-sub">Магазины, точки на рынке, пекарни. Настройка и ремонт — в точке или удалённо. Вы описываете проблему — пишете в мессенджер или звоните, я отвечаю и говорю, что можно сделать.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contacts">Написать или позвонить</a>
+      <a class="btn btn-ghost" href="#services">Что я делаю</a>
     </div>
   </div>
 </header>
@@ -86,14 +213,14 @@
 <section id="services">
   <div class="wrap">
     <h2>Что я делаю</h2>
-    <p class="lead" style="margin-bottom:24px">Каждая задача — удалённо или с выездом на точку, что быстрее и удобнее. Договориться можно по любому пункту из списка — и не только из него.</p>
+    <p class="section-sub">Каждая задача — удалённо или с выездом на точку, что быстрее и удобнее. Договориться можно по любому пункту из списка — и не только из него.</p>
+    <div class="grid">
 
-    <div class="cards">
       <div class="card">
         <h3>1С и товароучёт</h3>
         <ul>
           <li>Настройка и сопровождение: 1С:Розница, 1С:УНФ, 1С:Управление торговлей</li>
-          <li>Программы ЦОР «Штрих-М»: Торговое предприятие 7 и 5, Кассовая программа Штрих-М Кассир 5</li>
+          <li>Программы ЦОР «Штрих-М»: Торговое предприятие 7 и 5, Кассир 5</li>
           <li>Настройка обмена с 1С:Бухгалтерия — торговая база и бухгалтерия снова ходят в паре</li>
           <li>Доработка конфигураций: отчёты, печатные формы, дописывание типовой под вашу специфику</li>
           <li>Внедрение с нуля: подбор ПО и оборудования для открытия магазина или новой точки — чтобы заработало сразу</li>
@@ -106,12 +233,12 @@
           <li>Подключение и настройка касс, сканеров, весов, принтеров этикеток</li>
           <li>Подключение ОФД</li>
           <li>Разбор ошибок кассы: если проблема программная — исправляю; если нужен инженер по ККТ — скоординирую его работу</li>
+          <li>Замена ФН, регистрация и перерегистрация касс — оформляется через сервисный центр ККТ, я подскажу, куда обратиться, и всё скоординирую</li>
         </ul>
-        <p class="disclaimer">Замена ФН, регистрация и перерегистрация касс — оформляется через сервисный центр ККТ. Я подскажу, куда обратиться, помогу с оформлением и после замены проверю, что касса работает как надо.</p>
       </div>
 
-      <div class="card note">
-        <span class="badge">Важно — не откладывайте</span>
+      <div class="card card-wide card-warn">
+        <span class="badge-warn">Важно — не откладывайте</span>
         <h3>Маркировка, «Честный знак», ЕГАИС, ТС ПИоТ</h3>
         <ul>
           <li>Подключение и настройка «Честного знака», ЕГАИС, разрешительного режима</li>
@@ -119,8 +246,7 @@
           <li>Разбор ошибок модуля: не инициализируется, не проходит связь с ГИС МТ, истекает лицензия</li>
           <li>Продление лицензий ТС ПИоТ — слежу за сроками, чтобы касса не встала в разгар дня</li>
         </ul>
-        <p><strong>Кто не успел поставить ТС ПИоТ — самое время.</strong> С 1 июля 2026-го старая схема проверки кодов больше не работает: касса без настроенного модуля не сможет продать ни одной единицы маркированного товара — продажа блокируется на уровне кассовой системы. А с 1 сентября 2026-го «Честный знак» назначает штрафы автоматически: за просрочку — 10 000 ₽ за каждую проданную единицу для ИП (20 000 ₽ для юрлиц), за торговлю без регистрации в системе — 50 000 ₽.</p>
-        <p class="accent-warn"><strong>Приходите, пока не оштрафовало — разберёмся быстрее, чем напишут постановление.</strong></p>
+        <p class="warn-text">Кто не успел поставить ТС ПИоТ — самое время. С 1 июля 2026-го старая схема проверки кодов больше не работает: касса без настроенного модуля <strong>не сможет продать ни одной единицы маркированного товара</strong> — продажа блокируется на уровне кассовой системы. А с 1 сентября 2026-го «Честный знак» назначает штрафы автоматически: за просрочку — 10 000 ₽ за каждую проданную единицу для ИП (20 000 ₽ для юрлиц), за торговлю без регистрации в системе — 50 000 ₽. Приходите, пока не оштрафовало — разберёмся быстрее, чем пишут постановление.</p>
       </div>
 
       <div class="card">
@@ -129,7 +255,7 @@
           <li>Подключение и настройка</li>
           <li>Привязка к товароучётной базе или к кассе</li>
         </ul>
-        <p class="disclaimer">Сам терминал не устанавливаю — для этого есть специалисты банка. Всё остальное до и вокруг него — моё.</p>
+        <p class="note">Сам терминал не устанавливаю — для этого есть специалисты банка. Всё остальное до и вокруг него — моё.</p>
       </div>
 
       <div class="card">
@@ -154,7 +280,7 @@
           <li>Продавцы: работа с кассой — открытие и закрытие смены, чеки, возвраты</li>
           <li>Операторы и товароведы: работа с товароучётной программой</li>
         </ul>
-        <p class="disclaimer">Объясняю на человеческом языке, без «нажмите сюда и сами разберётесь».</p>
+        <p class="note">Объясняю на человеческом языке, без «нажмите сюда и сами разберётесь».</p>
       </div>
 
       <div class="card">
@@ -182,53 +308,68 @@
           <li>Печать из 1С</li>
         </ul>
       </div>
-    </div>
 
-    <p class="lead" style="margin-top:24px">Не нашли свою задачу в списке? Напишите — разберёмся. Если задача не моя, честно скажу и по возможности подскажу, к кому обратиться.</p>
+    </div>
+    <p class="section-sub" style="margin-top:28px; margin-bottom:0;">Не нашли свою задачу в списке? Напишите — разберёмся. Если задача не моя, честно скажу и по возможности подскажу, к кому обратиться.</p>
   </div>
 </section>
 
-<section id="how" style="background:var(--bg2)">
+<section>
   <div class="wrap">
     <h2>Как работаем</h2>
-    <p class="lead" style="margin-bottom:24px">Четыре шага — и без сюрпризов по факту.</p>
+    <p class="section-sub">Четыре шага — и без сюрпризов по факту.</p>
     <div class="steps">
-      <div class="step"><b>1 · Заявка</b><p>Пишете в мессенджер или звоните — коротко, своими словами, что случилось.</p></div>
-      <div class="step"><b>2 · Разбор и решение</b><p>Смотрим, что можно сделать, и говорю, чем это обернётся по срокам и деньгам.</p></div>
-      <div class="step"><b>3 · Договорённость</b><p>Цену и сроки фиксируем до начала работ, без «посмотрим по факту». Если в процессе всплывает что-то ещё — слабый интернет, компьютер в плохом состоянии, обновления, которые не идут, пока не убрано препятствие, — я сразу называю проблему и её влияние на сроки и цену. Решаем вместе, а не молча делаем «внезапные» работы.</p></div>
-      <div class="step"><b>4 · Выполнение</b><p>Делаю на месте или удалённо — что быстрее и удобнее. Проверяю результат вместе с вами.</p></div>
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Заявка</h3>
+        <p>Пишете в мессенджер или звоните — коротко, своими словами, что случилось.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Разбор и решение</h3>
+        <p>Смотрим, что можно сделать, и говорю, чем это обернётся по срокам и деньгам.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Договорённость</h3>
+        <p>Цену и сроки фиксируем до начала работ, без «посмотрим по факту». Если в процессе всплывает что-то ещё — слабый интернет, компьютер в плохом состоянии, обновления, которые не идут, пока не убрано препятствие, — я сразу называю проблему и её влияние на сроки и цену. Решаем вместе, а не молча делаем «внезапные» работы.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Выполнение</h3>
+        <p>Делаю на месте или удалённо — что быстрее и удобнее. Проверяю результат вместе с вами.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="price">
+<section>
   <div class="wrap">
     <h2>Прайс</h2>
+    <p class="section-sub">Понятно и без звёздочек.</p>
     <div class="price-box">
-      <p><strong>Понятно и без звёздочек.</strong></p>
       <p>Стоимость услуг — по договорённости после короткого разбора задачи. Я не называю цену «с потолка»: сначала смотрю, что нужно сделать, потом говорю сумму и срок.</p>
       <p>Кому-то хватает одного звонка с консультацией, кому-то нужен выезд и полный настрой — цена соответствует работе, а не желаемому чеку.</p>
-      <p><strong>Про выезды.</strong> По Кемерову выезд включён в стоимость работы. Пригород и другие города — отдельная договорённость: время в дороге, бензин, а при дальних выездах возможен ночлег. Всё оговариваем заранее, чтобы итог не стал сюрпризом ни для вас, ни для меня.</p>
+      <p class="note"><strong>Про выезды.</strong> По Кемерову выезд включён в стоимость работы. Пригород и другие города — отдельная договорённость: время в дороге, бензин, а при дальних выездах возможен ночлег. Всё оговариваем заранее, чтобы итог не стал сюрпризом ни для вас, ни для меня.</p>
     </div>
   </div>
 </section>
 
-<section id="fit" style="background:var(--bg2)">
+<section>
   <div class="wrap">
     <h2>Кому подходит</h2>
-    <p class="lead" style="margin-bottom:24px">Если вы узнали себя в одной из строк — это ко мне.</p>
-    <div class="fit">
+    <p class="section-sub">Если вы узнали себя в одной из строк — это ко мне.</p>
+    <div class="aud">
       <div class="card">
         <h3>Магазины</h3>
         <p>Кассы, товароучёт, маркировка, персонал — всё под ключ и на сопровождении. Магазин должен торговать, а не стоять из-за ошибки на кассе.</p>
       </div>
       <div class="card">
         <h3>Точки на рынке</h3>
-        <p>Своей айтишной инфраструктуры там нет и не надо — нужны рабочая касса и порядок с маркировкой. Если работаете на Эвоторе — подскажу честно, стоит ли что-то менять.</p>
+        <p>Своей айтишной инфраструктуры там нет и не надо — нужны рабочая касса и порядок с маркировкой. Если у вас стоит Эвотор или похожая коробочка — подскажу честно, стоит ли что-то менять, а если всё работает — так и скажу.</p>
       </div>
-      <!-- ЗАМЕНИТЕ: пекарни — оставить или убрать, решать вам -->
       <div class="card">
-        <h3>Пекарни</h3>
+        <h3>Пекарни <!-- ЗАМЕНИТЕ: решить, оставлять ли пекарни --></h3>
         <p>У пекарни с производством — отдельная история: калькуляция и рецептуры, производство надо думать. Напишите — обсудим.</p>
       </div>
     </div>
@@ -237,25 +378,21 @@
 
 <section id="contacts">
   <div class="wrap">
-    <div class="contacts">
-      <h3>Контакты</h3>
-      <p>Напишите или позвоните — отвечаю сам. Если занят на выезде, перезвоню, как освобожусь.</p>
-      <ul class="contact-list">
-        <li><span class="who">Евгений — мессенджер МАКС (приоритетный, отвечаю быстрее всего):</span><br>
-          <a href="https://max.ru/u/79059031610" target="_blank" rel="noopener">Написать в МАКС</a></li>
-        <li><span class="who">Телефон:</span><br>
-          <a href="tel:+79059031610">8 905-903-16-10</a></li>
-        <li><span class="who">WhatsApp (запасной канал):</span><br>
-          <a href="https://wa.me/79059031610" target="_blank" rel="noopener">Написать в WhatsApp</a></li>
-      </ul>
-      <p class="hint">Опишите задачу в двух словах: что случилось и где вы находитесь. Так я быстрее пойму, нужно ли ехать или хватит удалёнки — и вы не потратите время впустую.</p>
-    </div>
+    <h2>Контакты</h2>
+    <p class="contact-lead">Напишите или позвоните — отвечаю сам. Если занят на выезде, перезвоню, как освобожусь.</p>
+    <div class="contact-name"><strong>Евгений</strong> — отвечаю сам</div>
+    <ul class="contact-list">
+      <li><a href="https://max.ru/u/79059031610" target="_blank" rel="noopener">МАКС</a><span class="contact-tag">приоритетный — отвечаю быстрее всего</span></li>
+      <li>Телефон: <a href="tel:+79059031610">8 905-903-16-10</a></li>
+      <li><a href="https://wa.me/79059031610" target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+    <p class="contact-hint">Опишите задачу в двух словах: что случилось и где вы находитесь. Так я быстрее пойму, нужно ли ехать или хватит удалёнки — и вы не потратите время впустую.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    ИТ-поддержка розницы · Кемерово · <strong>Евгений Гаазе</strong> · 1С, кассы, маркировка, видеонаблюдение
+    ИТ-поддержка розницы · Кемерово · Евгений Гаазе · 1С, кассы, маркировка, видеонаблюдение
   </div>
 </footer>
 
